@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  
   <style>
     body {
       font-family: Arial, sans-serif;
-      
     }
 
     h1 {
@@ -15,9 +13,9 @@
 
     .form-group {
       margin-bottom: 15px;
+      display: flex;
       align-items: center;
-      justify-content:center;
-      text-align: center;
+      justify-content: center;
     }
 
     .form-group label {
@@ -34,7 +32,8 @@
       border-radius: 4px;
     }
 
-    .form-group input[type="submit"] {
+    .form-group input[type="submit"],
+    .form-group input[type="edit"] {
       background-color: #4CAF50;
       color: white;
       padding: 10px 20px;
@@ -43,13 +42,19 @@
       cursor: pointer;
     }
 
-    .form-group input[type="submit"]:hover {
+    .form-group input[type="submit"]:hover,
+    .form-group input[type="edit"]:hover {
       background-color: #45A049;
+    }
+
+    /* Add spacing between buttons */
+    .form-group input[type="submit"] {
+      margin-right: 10px; /* Add margin-right for submit button */
     }
   </style>
 </head>
 <body>
-  <h1>Investment Form</h1>
+  <h1> Calculation Form </h1>
   <form>
     <div class="form-group">
       <label for="fund">Fund:</label>
@@ -84,10 +89,9 @@
     </div>
     <div class="form-group">
       <input type="submit" value="Submit">
+      <input type="edit" value="Edit">
     </div>
   </form>
-  <script src="index.js">
-
-    </script>
+  <script src="index.js"></script>
 </body>
 </html>

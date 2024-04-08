@@ -27,7 +27,9 @@ function calculateFinalAmount(amount, rate, taxRate) {
 }
 
 // Function to handle form submission and calculation
-function handleFormSubmission() {
+function handleFormSubmission(event) {
+    event.preventDefault(); // Prevent form submission
+
     const amount = parseFloat(document.getElementById('amount').value) || 0; // Get amount from input field, default to 0 if empty or NaN
     const rate = parseFloat(document.getElementById('rate').value) || 0.17; // Get rate from input field, default to 0.17 if empty or NaN
     const taxableRate = parseFloat(document.getElementById('taxable_rate').value) || 0.05; // Get taxable rate from input field, default to 0.05 if empty or NaN
@@ -45,6 +47,11 @@ function handleFormSubmission() {
     document.getElementById('interest').value = isNaN(interest) ? '' : interest.toFixed(2);
     document.getElementById('tax').value = isNaN(tax) ? '' : tax.toFixed(2);
     document.getElementById('total').value = isNaN(finalAmount) ? '' : finalAmount.toFixed(2);
+
+    // Store data into local storage
+    localStorage.setItem('interest', interest.toFixed(2));
+    localStorage.setItem('tax', tax.toFixed(2));
+    localStorage.setItem('total', finalAmount.toFixed(2));
 }
 
 // Add event listeners to rate and taxable rate input fields
@@ -63,6 +70,9 @@ document.addEventListener('taxCalculated', function(event) {
 document.addEventListener('finalAmountCalculated', function(event) {
     console.log('Final amount calculated:', event.detail.finalAmount);
 });
+
+// Add event listener to the form for submission
+document.getElementById('investmentForm').addEventListener('submit', handleFormSubmission);
 
 // Trigger initial calculation
 handleFormSubmission();
